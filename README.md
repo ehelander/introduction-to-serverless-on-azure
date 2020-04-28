@@ -53,6 +53,48 @@
 
 ## Getting Set Up
 
+### [Before We Start](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/e9076f44-d110-3c6d-02d4-b20e85230a34/watch)
+
+### [Getting Your Azure Account](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/e8f6cb59-c8a1-a4c0-a526-4f6ab3324882/watch)
+
+- [https://azure.microsoft.com/en-us/free/](https://azure.microsoft.com/en-us/free/)
+- Sign up with Microsoft account.
+- Sign in at [https://portal.azure.com/](https://portal.azure.com/#home)
+
+### [Installing Node.js and NPM](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/4da92ede-363a-373a-82c9-bd28d28de738/watch)
+
+- Download LTS from [https://nodejs.org/en/](https://nodejs.org/en/)
+
+### [Azure Functions Core Tools](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/e31ab6ed-9365-e08c-5b70-2d097862d736/watch)
+
+- .NET Core & Azure Function Core Tools
+- [https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash)
+  - There are 2 versions. We'll be using version 2.x.
+  - Follow steps for macOS
+    - Install .NET Core 2.1 for macOS.
+      - May be able to use [extension bundles](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-register#extension-bundles) instead?
+    - Install Core Tools
+
+```sh
+brew tap azure/functions
+brew install azure-functions-core-tools
+```
+
+### [VSCode and Extensions](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/7e48fe79-adf9-4fa2-6987-f27f0aec8e29/watch)
+
+- [https://code.visualstudio.com/](https://code.visualstudio.com/)
+- Extensions:
+  - Azure Functions
+    - `ms-azuretools.vscode-azurefunctions`
+  - Azure Cosmos DB
+    - `ms-azuretools.vscode-cosmosdb`
+- Extension are now visible in the Azure side panel.
+- Sign in to Azure.
+
+### [Git and GitHub Repo](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/ac36c399-cad3-e1e1-9e8e-973193edce7e/watch)
+
+- Create repo: `acloudguru-serverless-azure`
+
 ## Building a Web API
 
 ## Event Grid
