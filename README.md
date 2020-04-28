@@ -93,9 +93,49 @@ brew install azure-functions-core-tools
 
 ### [Git and GitHub Repo](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/ac36c399-cad3-e1e1-9e8e-973193edce7e/watch)
 
-- Create repo: `acloudguru-serverless-azure`
+- Create repo (or directory): `acloudguru-serverless-azure`
+
+  ```sh
+  mkdir acloudguru-serverless-azure
+  cd acloudguru-serverless-azure
+  ```
 
 ## Building a Web API
+
+### [Reminder of What We're Building](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/d250d155-1797-4f53-468b-226228bd6bf9/watch)
+
+### [Getting the Code from GitHub](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/fb736801-7aa8-f73c-24e4-c126a5c1c952/watch)
+
+- [https://github.com/acloudguru-resources/Course-Introduction_to_Serverless_on_Azure](https://github.com/acloudguru-resources/Course-Introduction_to_Serverless_on_Azure)
+- Copy code for `frontend/index.html` and `frontend/constants.js`:
+
+  ```sh
+  mkdir frontend
+  touch frontend/index.html
+  touch frontend/constants.js
+  ```
+
+- Install and run `lite-server`
+
+  ```sh
+  npm init
+  npm install lite-server
+  ```
+
+- Add script to `package.json`: `"dev": "lite-server --baseDir=\"frontend\"",`
+- Run `npm run dev`
+
+### [Overview of Azure Functions]()
+
+### [Creating the First Function]()
+
+### [Setting Up our CosmosDB]()
+
+### [Creating the Rest of our API]()
+
+### [Publishing our API to Azure]()
+
+### [Hosting our Static Website]()
 
 ## Event Grid
 
