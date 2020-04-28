@@ -125,7 +125,100 @@ brew install azure-functions-core-tools
 - Add script to `package.json`: `"dev": "lite-server --baseDir=\"frontend\"",`
 - Run `npm run dev`
 
-### [Overview of Azure Functions]()
+### [Overview of Azure Functions](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/b1b388bf-9516-f7a7-5898-b965e90c2fa0/watch)
+
+- [https://portal.azure.com/](https://portal.azure.com/)
+- The steps below may be out of date. Consider [Create you first function in the Azure portal](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function)
+- Go to `App Services`
+  - `Add`
+  - Search for `function`
+  - Create a `Function App`
+  - On the right, `Create`
+    - `App name`
+      - Provide one.
+      - Must be globally-unique.
+    - `Subscription`
+      - Pick one.
+    - `Resource Group`
+      - Create new.
+      - Everything in Azure is in a resource group.
+    - `OS`
+      - Windows is fine for now.
+    - `Hosting Plan`
+      - `Consumption Plan`
+        - Pay-as-you-go.
+        - 1 million requests per month for free.
+        - We'll pick this one.
+      - `App Service Plan`
+        - Allocate a set number of resources.
+        - A set fee per month based on tier.
+    - `Location`
+      - Pick one.
+    - `Storage`
+      - Can create new.
+    - `Application Insights`
+      - Native integration: Monitoring
+    - `Application Insights Location`
+      - Pick one
+  - We're creating a _container_ our functions will reside in.
+  - `Create`
+- Now go to `Function App`
+  - Should see function app created earlier.
+  - Add a function
+    - `Choose scenario`
+      - `Webook + API`
+        - We'll use this one.
+      - `Timer`
+      - `Data processing`
+    - `Choose a language`
+      - `CSharp`
+      - `JavaScript`
+        - We'll use this one.
+      - `FSharp`
+      - `Java`
+  - `Create this function`
+- `index.js`
+
+  ```js
+  module.exports = async function (context, req) {
+    context.log("JavaScript HTTP trigger function processed a request.");
+
+    if (req.query.name || (req.body && req.body.name)) {
+      context.res = {
+        // status: 200, /* Defaults to 200 */
+        body: "Hello " + (req.query.name || req.body.name),
+      };
+    } else {
+      context.res = {
+        status: 400,
+        body: "Please pass a name on the query string or in the request body",
+      };
+    }
+  };
+  ```
+
+  - Two variables are passed to the function:
+    - `context`
+      - Contains information about environment, etc.
+      - Call `context.done()` when complete.
+    - `req`
+      - The request.
+  - Save as-is.
+  - Can test in the browser (`> Run`).
+  - To log anything in an Azure Function:
+    - `context.log("foo")`
+  - Integrations
+    - `Triggers`
+      - What invokes the function.
+    - `Inputs`
+      - These are evaluated before the function.
+    - `Outputs`
+      - Provides the ability to perform an action upon completion of the function.
+
+- Clean up resources
+  - Go to `Resource groups`
+  - Select the one we created.
+  - `Delete resource group`
 
 ### [Creating the First Function]()
 
