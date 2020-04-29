@@ -306,7 +306,61 @@ brew install azure-functions-core-tools
 
   - `index.js` connects to the database, inserts the body from the request, closes the connection, and tells Azure Functions that it has completed.
 
-### [Setting Up our CosmosDB]()
+### [Setting Up our CosmosDB](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/0a75da09-c9f3-309a-ea24-d7ad250da306/watch)
+
+- We need an `acloudguru` database with a `speakers` collection, and we need to provide a `speakers_COSMODB` connection string.
+- Azure tab > Cosmos DB extension
+  - Create Cosmos DB account
+  - Provide subscription
+  - Name: `acloudguru`
+    - Used `ehelander-acloudguru-20200428`
+  - API: `MongoDB`
+  - Resource group: `acloudguru-serverless-course`
+  - Location:
+    - Choose one
+- This creates a Cosmos DB in the cloud.
+- Create database
+  - Right click on Cosmos account > `Create Database`
+  - Database name: `acloudguru`
+  - Collection name: `speakers`
+- Get connection string
+  - Right click on Cosmos account > `Copy Connection String`
+- Add `speakers_COSMOSDB` to `local.settings.json` and configure CORS for development:
+
+  ```json
+  {
+    "IsEncrypted": false,
+    "Values": {
+      "AzureWebJobsStorage": "",
+      "FUNCTIONS_WORKER_RUNTIME": "node",
+      "speakers_COSMOSDB": "PASTE_CONNECTION_STRING_HERE"
+    },
+    "Host": {
+      "LocalHttpPort": 7071,
+      "CORS": "*"
+    }
+  }
+  ```
+
+  - If the connection string contains `==`, these need to be encoded: `%3D%3D`
+  - This file is excluded from our git repo.
+  - We can access these values from `process.env` when running locally.
+
+- POST to `http://localhost:7071/api/createSpeaker` with a raw body:
+
+  ```json
+  {
+    "id": 1,
+    "name": "Eric Helander",
+    "title": "Software Engineer Consultant",
+    "location": "MN",
+    "skills": ["web", "data", "cloud"]
+  }
+  ```
+
+- Azure tab > Cosmos DB
+  - Refresh
+  - Should see the item under the `speakers` collection.
 
 ### [Creating the Rest of our API]()
 
