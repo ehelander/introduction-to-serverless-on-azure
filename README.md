@@ -220,7 +220,91 @@ brew install azure-functions-core-tools
   - Select the one we created.
   - `Delete resource group`
 
-### [Creating the First Function]()
+### [Creating the First Function](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/6639c0f5-ef79-9b99-a8e4-fcd4982fac30/watch)
+
+- Make `backend` directory.
+
+  ```sh
+  mkdir backend
+  ```
+
+- From the VS Code Azure tab:
+  - `Create New Project`
+    - Direct it to the `backend` folder via `Browse`.
+    - `JavaScript`
+    - `Open in current window`
+  - What did it do?
+    - Created a few files:
+      - `.vscode/`
+      - `.gitignore`
+      - `host.json`
+        - We can define some parameters here for our Azure function.
+      - `local.settings.json`
+        - Referenced from the Azure Function's runtime when running locally.
+        - So we'll be adding a Cosmos DB connection string here.
+- From the VS Code Azure tab:
+
+  - `Create Function`
+    - Select our `backend` directory.
+    - `HTTP trigger`
+    - `createSpeaker`
+    - `Anonymous` authorization level
+  - What did this do?
+
+    - Added `createSpeaker/` (each function will get its own directory)
+
+      - `index.js`
+        - The code we'll be running when our function is executed (similar to when we created the function via the portal).
+      - `function.json`
+
+        ```json
+        {
+          "bindings": [
+            {
+              "authLevel": "anonymous",
+              "type": "httpTrigger",
+              "direction": "in",
+              "name": "req",
+              "methods": ["get", "post"]
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "res"
+            }
+          ]
+        }
+        ```
+
+        - Configuration for the function.
+          - `httpTrigger` is an input (`in`) binding &rarr; `req`.
+          - And we have an output (`out`) binding &rarr; `res`.
+          - We can delete the `get`.
+
+      - `sample.dat`
+
+- Run:
+
+  ```sh
+  cd backend
+  func start
+  ```
+
+  - Shows us we have 1 available HTTP function: `createSpeaker: [POST] http://localhost:7071/api/createSpeaker`
+
+- From Postman: POST to `http://localhost:7071/api/createSpeaker?name=Eric`
+  - Note: Had to change to Node 12 for `func start` to work.
+- Copy `backend/createSpeaker/index.js` from [https://github.com/ACloudGuru-Resources/Course-Introduction_to_Serverless_on_Azure/blob/master/backend/createSpeaker/index.js](https://github.com/ACloudGuru-Resources/Course-Introduction_to_Serverless_on_Azure/blob/master/backend/createSpeaker/index.js).
+
+  - Note that our Costmos DB will use Mongo as an API.
+
+    ```sh
+    cd backend
+    npm init
+    npm install mongodb
+    ```
+
+  - `index.js` connects to the database, inserts the body from the request, closes the connection, and tells Azure Functions that it has completed.
 
 ### [Setting Up our CosmosDB]()
 
