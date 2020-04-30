@@ -64,6 +64,7 @@
 ### [Installing Node.js and NPM](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/4da92ede-363a-373a-82c9-bd28d28de738/watch)
 
 - Download LTS from [https://nodejs.org/en/](https://nodejs.org/en/)
+- Note: Had to `nvm use 12`.
 
 ### [Azure Functions Core Tools](https://acloud.guru/course/azure-intro-serverless/learn/6da8bd80-5988-cd0e-e9d2-4580d1b21ad3/e31ab6ed-9365-e08c-5b70-2d097862d736/watch)
 
@@ -319,6 +320,13 @@ brew install azure-functions-core-tools
   - Location:
     - Choose one
 - This creates a Cosmos DB in the cloud.
+- Note
+  - Got error when trying to create DB via Azure tab (multiple days, multiple regions).
+    - Error:
+  - Eventually succeeded via the portal (maybe a version issue?):
+    - `ehelanderacloudguru202004300937`
+    - Azure portal > Cosmos DB > Connection String > Primary Connection String.
+    - VS Code > Azure tab > Attach Database Accounts > paste primary connection string
 - Create database
   - Right click on Cosmos account > `Create Database`
   - Database name: `acloudguru`
@@ -362,7 +370,48 @@ brew install azure-functions-core-tools
   - Refresh
   - Should see the item under the `speakers` collection.
 
-### [Creating the Rest of our API]()
+### [Creating the Rest of our API](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/fd06515c-6f1d-cb43-e272-445fa8442200/watch?backUrl=~2Fcourses)
+
+- We need to create the following functions:
+  - `createSpeaker` (created previously)
+  - `getSpeakers`
+    - VS Code
+    - Azure tab
+    - Create function
+    - `backend`
+      - `HTTP trigger`
+      - `getSpeakers`
+      - `Anonymous`
+      - Copy code from [Github](https://github.com/ACloudGuru-Resources/Course-Introduction_to_Serverless_on_Azure/blob/master/backend/getSpeakers/index.js).
+    - Remove `post` from `function.json` `methods`.
+  - `getSpeaker`
+    - [Github](https://github.com/ACloudGuru-Resources/Course-Introduction_to_Serverless_on_Azure/blob/master/backend/getSpeaker/index.js)
+    - Remove `post` from `function.json` `methods`.
+  - `updateSpeaker`
+    - [Github](https://github.com/ACloudGuru-Resources/Course-Introduction_to_Serverless_on_Azure/blob/master/backend/updateSpeaker/index.js)
+    - Remove `get` and `post` from `function.json` `methods`; add `put`.
+  - `deleteSpeaker`
+    - [Github](https://github.com/ACloudGuru-Resources/Course-Introduction_to_Serverless_on_Azure/blob/master/backend/deleteSpeaker/index.js)
+    - Remove `get` and `post` from `function.json` `methods`; add `delete`.
+- Test from Postman
+  - GET `localhost:7071/api/getSpeakers`
+  - GET `localhost:7071/api/getSpeaker?id=1`
+- Test from frontend
+
+  - Terminate & restart function process.
+  - Should see list of 5 functions.
+  - Open new terminal.
+
+    ```sh
+    # cd frontend
+    # lite-server
+    npm run dev
+    ```
+
+  - Add a new speaker.
+  - Verify from VS Code Cosmos extension that the new speaker appears.
+  - Edit speaker.
+  - Delete speaker.
 
 ### [Publishing our API to Azure]()
 
