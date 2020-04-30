@@ -42,14 +42,14 @@
 
 ### [Serverless Patterns](https://acloud.guru/course/azure-intro-serverless/learn/11f9f04a-c8a8-b34d-e1db-851947d532c6/3238edf7-8bc1-7de6-62a5-d28f0ff46755/watch)
 
-- ![scheduling](2020-04-28-15-39-24.png)
-- ![real-time-streaming-iot-data](2020-04-28-15-39-45.png)
-- ![web-mobile-backends](2020-04-28-15-40-05.png)
-- ![asynchronous-processing](2020-04-28-15-40-29.png)
+- ![scheduling](img/2020-04-28-15-39-24.png)
+- ![real-time-streaming-iot-data](img/2020-04-28-15-39-45.png)
+- ![web-mobile-backends](img/2020-04-28-15-40-05.png)
+- ![asynchronous-processing](img/2020-04-28-15-40-29.png)
 
 ### [What We're Building](https://acloud.guru/course/azure-intro-serverless/learn/11f9f04a-c8a8-b34d-e1db-851947d532c6/b7625ba2-808f-001a-0907-3665dbc88653/watch)
 
-- ![what-we-will-be-building](2020-04-28-15-42-21.png)
+- ![what-we-will-be-building](img/2020-04-28-15-42-21.png)
 
 ## Getting Set Up
 
