@@ -229,6 +229,8 @@ brew install azure-functions-core-tools
   mkdir backend
   ```
 
+- Note:
+  - After much troubleshooting, eventually had to open up a new VS Code window for the `backend` directory and create functions from there. Otherwise, they would not show up in the Azure Functions section.
 - From the VS Code Azure tab:
   - `Create New Project`
     - Direct it to the `backend` folder via `Browse`.

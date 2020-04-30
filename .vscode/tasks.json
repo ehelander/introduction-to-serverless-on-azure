@@ -8,7 +8,7 @@
 			"isBackground": true,
 			"dependsOn": "npm install",
 			"options": {
-				"cwd": "${workspaceFolder}/acloudguru-serverless-azure/backend"
+				"cwd": "${workspaceFolder}/acloudguru-serverless-azure/backend2"
 			}
 		},
 		{
@@ -16,7 +16,7 @@
 			"label": "npm install",
 			"command": "npm install",
 			"options": {
-				"cwd": "${workspaceFolder}/acloudguru-serverless-azure/backend"
+				"cwd": "${workspaceFolder}/acloudguru-serverless-azure/backend2"
 			}
 		},
 		{
@@ -25,7 +25,7 @@
 			"command": "npm prune --production",
 			"problemMatcher": [],
 			"options": {
-				"cwd": "${workspaceFolder}/acloudguru-serverless-azure/backend"
+				"cwd": "${workspaceFolder}/acloudguru-serverless-azure/backend2"
 			}
 		}
 	]

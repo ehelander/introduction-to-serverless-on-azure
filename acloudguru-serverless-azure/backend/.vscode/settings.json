@@ -1,5 +1,5 @@
 {
-  "azureFunctions.deploySubpath": "acloudguru-serverless-azure/backend2",
+  "azureFunctions.deploySubpath": ".",
   "azureFunctions.postDeployTask": "npm install",
   "azureFunctions.projectLanguage": "JavaScript",
   "azureFunctions.projectRuntime": "~2",
