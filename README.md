@@ -312,6 +312,13 @@ brew install azure-functions-core-tools
 ### [Setting Up our CosmosDB](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/0a75da09-c9f3-309a-ea24-d7ad250da306/watch)
 
 - We need an `acloudguru` database with a `speakers` collection, and we need to provide a `speakers_COSMODB` connection string.
+- Note:
+  - Got error when trying to create DB via Azure tab (multiple days, multiple regions).
+    - Error:
+  - Eventually succeeded via the portal (maybe a version issue?):
+    - `ehelanderacloudguru202004300937`
+    - Azure portal > Cosmos DB > Connection String > Primary Connection String.
+    - VS Code > Azure tab > Attach Database Accounts > paste primary connection string
 - Azure tab > Cosmos DB extension
   - Create Cosmos DB account
   - Provide subscription
@@ -322,13 +329,6 @@ brew install azure-functions-core-tools
   - Location:
     - Choose one
 - This creates a Cosmos DB in the cloud.
-- Note
-  - Got error when trying to create DB via Azure tab (multiple days, multiple regions).
-    - Error:
-  - Eventually succeeded via the portal (maybe a version issue?):
-    - `ehelanderacloudguru202004300937`
-    - Azure portal > Cosmos DB > Connection String > Primary Connection String.
-    - VS Code > Azure tab > Attach Database Accounts > paste primary connection string
 - Create database
   - Right click on Cosmos account > `Create Database`
   - Database name: `acloudguru`
@@ -415,9 +415,60 @@ brew install azure-functions-core-tools
   - Edit speaker.
   - Delete speaker.
 
-### [Publishing our API to Azure]()
+### [Publishing our API to Azure](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/34bed681-9898-7093-ecc1-fe7ace0b40b8/watch?backUrl=~2Fcourses)
 
-### [Hosting our Static Website]()
+- In VS Code `backend`, Azure tab > Functions > Deploy to Azure
+  - `backend`
+    - It zips it up and deploys it
+    - Use same subscription as earlier
+    - Create a new function app
+      - Because we don't have one in the cloud yet
+      - `acloudguru-serverless-course-ehelander`
+    - Select a resource group
+      - `acloudguru-serverless-course`
+    - Create a new storage account
+      - Use auto-populated name
+    - Select location
+- VS Code > Azure tab > Functions
+  - Should see cloud-based function
+  - Note, though, that `local.settings.json` were not uploaded. So we don't have a connection to the DB yet.
+    - Application Settings > Add New Setting
+      - `speakers_COSMOSDB`: connection string from `local.settings.json`
+    - Right click on function in VS Code > Copy URL > Postman
+      - E.g., `https://acloudguru-serverless-course-ehelander.azurewebsites.net/api/getSpeakers`
+      - May be slow with cold start.
+- Update our frontend
+  - Open new VS Code window for `frontend`
+  - In `constants.js`, change `API_URL` to the new URL
+    - E.g., `https://acloudguru-serverless-course-ehelander.azurewebsites.net`
+- And we need to set our CORS settings in Azure
+  - Azure portal > Function apps > select the one we created > Platform features > API > CORS
+  - Add a `*` allowed origin and delete the others.
+- Azure tab > functions > right click on a function > start stream logs
+
+### [Hosting our Static Website](https://acloud.guru/course/azure-intro-serverless/learn/f9771d34-046b-7d06-bad0-8d1fe80da26b/919ccd23-c306-b68c-851a-1cdba8419282/watch?backUrl=~2Fcourses)
+
+- Azure portal > storage accounts > select subscription
+  - Add a new storage account
+  - Name: 24 characters max
+    - `acgehelander`
+  - Deployment model: `Resource manager`
+  - Account kind: `StorageV2 (general purpose v2)`
+  - Location
+  - Replication: `Locally-redundant storage (LRS)`
+  - Performance: `Standard`
+  - Access tier: `Hot`
+  - Secure transfer required: `Enabled`
+  - Resource group
+  - Create
+- Navigate to storage account
+  - Settings > Static website > Enabled
+  - Index document name: `index.html`
+  - Error document: `index.html`
+- Primary endpoint: This is publicly-accessible.
+  - Click on `$web`.
+  - Upload files.
+  - Navigate to primary endpoint.
 
 ## Event Grid
 
